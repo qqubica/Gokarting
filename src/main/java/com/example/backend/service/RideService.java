@@ -3,7 +3,6 @@ package com.example.backend.service;
 import com.example.backend.model.Ride;
 import com.example.backend.model.Track;
 import com.example.backend.repository.RideRepository;
-import com.example.backend.repository.TrackRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.StreamSupport;
 
 
 @Service

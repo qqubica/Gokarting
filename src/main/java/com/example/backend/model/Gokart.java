@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Collection;
-import java.util.List;
 @Data
 @Entity
 public class Gokart {

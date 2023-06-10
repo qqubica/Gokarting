@@ -2,7 +2,6 @@ package com.example.backend.service;
 
 import com.example.backend.model.Gokart;
 import com.example.backend.repository.GokartRepository;
-import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

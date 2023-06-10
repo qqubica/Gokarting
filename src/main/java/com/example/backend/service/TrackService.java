@@ -1,10 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.model.Localisation;
-import com.example.backend.model.Ride;
 import com.example.backend.model.Track;
-import com.example.backend.repository.LocalisationRepository;
-import com.example.backend.repository.RideRepository;
 import com.example.backend.repository.TrackRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;

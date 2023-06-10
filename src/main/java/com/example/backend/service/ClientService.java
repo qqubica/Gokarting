@@ -1,14 +1,12 @@
 package com.example.backend.service;
 
 import com.example.backend.model.Client;
-import com.example.backend.model.Worker;
 import com.example.backend.repository.ClientRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
