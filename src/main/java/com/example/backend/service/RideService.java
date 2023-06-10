@@ -1,61 +1,59 @@
 package com.example.backend.service;
 
+import com.example.backend.model.Ride;
+import com.example.backend.model.Track;
 import com.example.backend.repository.RideRepository;
-import lombok.AllArgsConstructor;
+import com.example.backend.repository.TrackRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.StreamSupport;
+
 
 @Service
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
 public class RideService {
     RideRepository rideRepository;
     @Autowired
-    public RideService(RideRepository rideRepository) {
+    public RideService(RideRepository rideRepository, TrackService trackService) {
         this.rideRepository = rideRepository;
         if (rideRepository.count() == 0) {
-            populateWithRandomData();
+            createRandomRides(10, trackService);
             System.out.println("Populated ride repository with random data.");
         }
     }
-    public void populateWithRandomData() {
-//        String[] names = {"John", "Emma", "Michael", "Sophia", "William"};
-//        String[] lastNames = {"Smith", "Johnson", "Brown", "Taylor", "Anderson"};
-//        EnumSet<Ride.RideRole> roles = Ride.getRideRoles();
-//
-//        Random random = new Random();
-//
-//        for (int i = 0; i < 10; i++) {
-//            Ride ride = new Ride();
-//
-//            // Generate random name and last name
-//            String name = names[random.nextInt(names.length)];
-//            String lastName = lastNames[random.nextInt(lastNames.length)];
-//
-//            ride.setName(name);
-//            ride.setSurname(lastName);
-//
-//            // Generate random email
-//            String email = name.toLowerCase() + "." + lastName.toLowerCase() + random.nextDouble() + "@example.com";
-//            ride.setEmail(email);
-//
-//            // Generate random password
-//            String password = ride.getEmail() + "123";
-//            ride.setPassword(password);
-//
-//            // Generate random work start date (within the last year)
-//            Date currentDate = new Date();
-//            long oneYearInMillis = 365L * 24 * 60 * 60 * 1000;
-//            long randomMillis = (long) (random.nextDouble() * oneYearInMillis);
-//            Date workStartDate = new Date(currentDate.getTime() - randomMillis);
-//
-//            ride.setWorkStartDate(workStartDate);
-//
-//            // Generate random ride role
-//            Ride.RideRole role = (Ride.RideRole)roles.toArray()[random.nextInt(roles.size())];
-//            ride.setRideRole(role);
-//
-//            rideRepository.save(ride);
+    public List<Ride> getRidesToStart() {
+        return rideRepository.findAllPlanedRides();
+    }
+
+    public void rideStartProcedure(Ride ride) {
+        ride.setStartTime(new Date());
+        rideRepository.save(ride);
+    }
+    public void createRandomRides(int n, TrackService trackService) {
+        Random random = new Random();
+        List<Track> tracks =  trackService.getTracks();
+
+        for (int i = 0; i < n; i++) {
+            Ride ride = new Ride();
+
+            if (random.nextBoolean()){
+                ride.setDuration(random.nextInt(100));
+            }
+
+            Track randomTrack = tracks.get(random.nextInt(tracks.size()));
+            ride.setTrack(randomTrack);
+
+            ride.setRideType(Ride.RideType.values()[random.nextInt(Ride.RideType.values().length)]);
+
+            ride.setRideType(Ride.RideType.values()[random.nextInt(Ride.RideType.values().length)]);
+
+            rideRepository.save(ride);
+        }
     }
 }
 
