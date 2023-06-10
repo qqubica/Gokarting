@@ -19,7 +19,7 @@ public class Gokart {
     @OneToMany
     private Collection<Lap> laps;
 
-    private enum GokartType {
+    public enum GokartType {
         KIDS, SPORT, NORMAL, OTHER
     }
 }

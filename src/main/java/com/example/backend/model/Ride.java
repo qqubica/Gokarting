@@ -29,11 +29,11 @@ public class Ride {
     @ManyToOne
     private Worker worker;
 
-    private enum RideStatus {
+    enum RideStatus {
         CREATED, PLANED, IN_PROGRESS, FINISHED, CANCLED, OTHER
     }
 
-    private enum RideType {
+    public enum RideType {
         RACE, NORMAL, TECHNICAL, OTHER
     }
 }
