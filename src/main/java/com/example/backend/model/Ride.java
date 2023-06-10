@@ -1,8 +1,6 @@
 package com.example.backend.model;
 
-import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
 import lombok.Data;
 
 import java.util.Collection;

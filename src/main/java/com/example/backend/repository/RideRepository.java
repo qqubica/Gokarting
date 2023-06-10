@@ -5,7 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
+
 @RepositoryRestResource(collectionResourceRel = "ride", path = "ride")
 public interface RideRepository extends Repository<Ride, Long>, CrudRepository<Ride, Long> {
-
+    List<Ride> findAllPlanedRides();
 }

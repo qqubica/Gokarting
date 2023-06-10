@@ -1,6 +1,5 @@
 package com.example.backend.model;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Data;
 

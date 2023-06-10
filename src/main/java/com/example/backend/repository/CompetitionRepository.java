@@ -1,6 +1,5 @@
 package com.example.backend.repository;
 
-import com.example.backend.model.BestDayTime;
 import com.example.backend.model.Competition;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;

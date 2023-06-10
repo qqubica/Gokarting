@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.Duration;
-import java.util.Collection;
 @Data
 @Entity
 public class Lap {
