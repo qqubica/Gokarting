@@ -25,8 +25,7 @@ public class LocalisationService {
     }
 
     public List<Localisation> getLocalisationsList() {
-        return StreamSupport.stream(localisationRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return localisationRepository.findAll();
     }
 
     public void addRandomData(int records) {
