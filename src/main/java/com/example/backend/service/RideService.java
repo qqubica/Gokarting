@@ -6,9 +6,11 @@ import com.example.backend.repository.RideRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 
@@ -24,13 +26,12 @@ public class RideService {
             System.out.println("Populated ride repository with random data.");
         }
     }
-    public List<Ride> getRidesToStart() {
-        return rideRepository.findAllPlanedRides();
-    }
-
-    public void rideStartProcedure(Ride ride) {
-        ride.setStartTime(new Date());
+    public Ride prepereRide(Long id) {
+        Optional<Ride> optionalRide = rideRepository.findById(id);
+        Ride ride = optionalRide.orElseThrow(() -> new RuntimeException("Ride " + id + " not found"));
+        ride.setRideStatus(Ride.RideStatus.PREPERING);
         rideRepository.save(ride);
+        return ride;
     }
     public void createRandomRides(int n, TrackService trackService) {
         Random random = new Random();
