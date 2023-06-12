@@ -28,8 +28,7 @@ public class RideController {
     @GetMapping("/prepereRide/{id}")
     public List<Gokart> prepereRide(@PathVariable("id") Long id) {
         rideService.prepereRide(id);
-        Ride r = rideRepository.findById(id).get();
-        r.getTrack().getLocalisation();
+        Ride r = rideRepository.findById(id).orElseThrow(()-> new RuntimeException("Ride " + id + " not found"));
         return gokartRepository.getGokartsByLocalisation(r.getTrack().getLocalisation());
     }
 }

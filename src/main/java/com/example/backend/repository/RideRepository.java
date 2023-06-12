@@ -1,6 +1,5 @@
 package com.example.backend.repository;
 
-import com.example.backend.model.Gokart;
 import com.example.backend.model.Ride;
 import com.example.backend.model.Track;
 import org.springframework.data.repository.CrudRepository;
