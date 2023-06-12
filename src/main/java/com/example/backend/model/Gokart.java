@@ -17,7 +17,7 @@ public class Gokart {
     private GokartType typGokarta;
     @OneToMany
     private Collection<Lap> laps;
-    @OneToOne
+    @ManyToOne(optional = false)
     private Localisation localisation;
 
     public enum GokartType {
