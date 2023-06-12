@@ -16,4 +16,6 @@ public class Localisation {
     private Collection<Track> tracks;
     @OneToMany
     private Collection<Competition> competitions;
+    @OneToMany
+    private Collection<Gokart> gokarts;
 }

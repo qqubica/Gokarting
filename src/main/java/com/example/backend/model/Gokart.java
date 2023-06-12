@@ -17,6 +17,8 @@ public class Gokart {
     private GokartType typGokarta;
     @OneToMany
     private Collection<Lap> laps;
+    @OneToOne
+    private Localisation localisation;
 
     public enum GokartType {
         KIDS, SPORT, NORMAL, OTHER
