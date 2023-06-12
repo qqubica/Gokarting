@@ -27,8 +27,8 @@ public class Ride {
     @ManyToOne
     private Worker worker;
 
-    enum RideStatus {
-        CREATED, PLANED, IN_PROGRESS, FINISHED, CANCLED, OTHER
+    public enum RideStatus {
+        CREATED, PREPERING, IN_PROGRESS, FINISHED, CANCLED, OTHER
     }
 
     public enum RideType {
