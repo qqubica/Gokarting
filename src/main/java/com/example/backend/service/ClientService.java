@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.model.Client;
+import com.example.backend.model.Ride;
 import com.example.backend.repository.ClientRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class ClientService {
             System.out.println("Populated client repository with random data.");
         }
     }
+
     public void addRandomClients(int n) {
         String[] names = {"Jan", "Emilia", "Michal", "Zosia", "Wilson"};
         String[] lastNames = {"Smith", "Kowalski", "Wudarski", "Taylor", "Anderson"};
@@ -59,7 +61,6 @@ public class ClientService {
     }
 
     public List<Client> getClientsList() {
-        return StreamSupport.stream(clientRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return clientRepository.findAll();
     }
 }

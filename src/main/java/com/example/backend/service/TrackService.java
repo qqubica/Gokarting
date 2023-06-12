@@ -40,8 +40,7 @@ public class TrackService {
     }
 
     public List<Track> getTracks() {
-        return StreamSupport.stream(trackRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return trackRepository.findAll();
     }
 
     public int getTracksCount() {
