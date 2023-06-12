@@ -1,5 +1,6 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,5 +17,6 @@ public class Person {
     @Column(unique = true, nullable = false)
     private String email;
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 }
