@@ -9,6 +9,7 @@
       outlined
       class="pl-10"
       style="width: 500px"
+      :disabled="isDisabled"
   />
 </template>
 
@@ -53,7 +54,13 @@ export default {
     trackSelected(track){
       this.$emit('trackSelected', track)
     },
-  }
+  },
+  props: {
+    isDisabled: {
+      type: Boolean,
+      required: false
+    }
+  },
 }
 </script>
 

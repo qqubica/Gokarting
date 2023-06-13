@@ -23,6 +23,7 @@ export default defineComponent({
     @change="localizationSelected($event)"
     label="Wybierz lokalizację"
     outlined
+    :disabled="isDisabled"
 />
 </template>
 <script>
@@ -66,7 +67,14 @@ export default {
         }
       });
     },
-  }
+  },
+
+  props: {
+    isDisabled: {
+      type: Boolean,
+      default: false,
+    }
+  },
 }
 </script>
 

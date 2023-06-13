@@ -9,6 +9,7 @@
     outlined
     class="pl-10"
     style="width: 500px"
+    :disabled="isDisabled"
   />
 </template>
 
@@ -25,8 +26,6 @@ export default {
   }),
 
   methods: {
-
-
     respondToWorkerSelected(ride){
       this.$emit('rideSelected', ride)
     },
@@ -46,6 +45,12 @@ export default {
 
     adaptRides(rides) {
       return rides.map(r => r)
+    },
+  },
+  props: {
+    isDisabled: {
+      type: Boolean,
+      default: false
     },
   },
 }

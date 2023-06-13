@@ -16,6 +16,7 @@ export default defineComponent({
   @change="workerSelected($event)"
   label="Wybierz pracownika"
   outlined
+  :disabled="isDisabled"
 />
 
 </template>
@@ -34,7 +35,6 @@ export default {
   },
 
   methods: {
-
     workerSelected(worker){
       this.$emit('workerSelected', worker)
     },
@@ -63,6 +63,12 @@ export default {
       });
     },
   },
+  props: {
+    isDisabled: {
+      type: Boolean,
+      required: false,
+    }
+  }
 }
 </script>
 <style scoped>

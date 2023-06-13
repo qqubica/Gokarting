@@ -3,6 +3,8 @@
     <v-btn
         class="ml-10"
         @click="changeDurationClicked"
+        color="secondary"
+        :disabled="isDisabled"
     >
       Zmień czas trwania przejazdu
     </v-btn>
@@ -73,6 +75,10 @@ export default {
   props: {
     ride: {
       type: Object,
+    },
+    isDisabled: {
+      type: Boolean,
+      required: false
     },
   },
 }
