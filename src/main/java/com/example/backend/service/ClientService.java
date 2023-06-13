@@ -6,6 +6,7 @@ import com.example.backend.repository.ClientRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.stream.StreamSupport;
 
 @Service
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
+@CrossOrigin(origins = "http://localhost:8081")
 public class ClientService {
     ClientRepository clientRepository;
     @Autowired
