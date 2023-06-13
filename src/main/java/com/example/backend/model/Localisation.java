@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -14,10 +16,10 @@ public class Localisation {
     private long id;
     @Column(nullable = false)
     private String name;
-    @OneToMany
-    private Collection<Track> tracks;
-    @OneToMany
-    private Collection<Competition> competitions;
-    @OneToMany
-    private Collection<Gokart> gokarts;
+    @OneToMany(mappedBy = "localisation")
+    private List<Track> tracks;
+    @OneToMany(mappedBy = "localisation")
+    private List<Competition> competitions;
+    @OneToMany(mappedBy = "localisation")
+    private List<Gokart> gokarts;
 }

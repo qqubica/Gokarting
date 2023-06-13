@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,8 +22,8 @@ public class Track {
     private int nrOfTurns;
     @ManyToOne(optional = false)
     private Localisation localisation;
-    @OneToMany
-    private Collection<Ride> ride;
+    @OneToMany(mappedBy = "track")
+    private List<Ride> ride;
 
     public Localisation getLocalisation() {
         return localisation;

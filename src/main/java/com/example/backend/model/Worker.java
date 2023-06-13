@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
+import java.util.List;
+
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -16,8 +18,8 @@ public class Worker extends Person {
     private Date workStartDate;
     @Enumerated(EnumType.STRING)
     private WorkerRole workerRole;
-    @OneToMany
-    private Collection<Ride> rides;
+    @OneToMany(mappedBy = "worker")
+    private List<Ride> rides;
 
     public static EnumSet<WorkerRole> getWorkerRoles() {
         return EnumSet.allOf(WorkerRole.class);

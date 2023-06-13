@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,8 +18,8 @@ public class RideGokartClient {
     private Ride ride;
     @ManyToOne
     private Gokart gokart;
-    @ManyToOne
+    @ManyToOne(targetEntity = Client.class, fetch = FetchType.EAGER)
     private Client client;
-    @OneToMany
-    private Collection<Lap> laps;
+    @OneToMany(mappedBy = "rideGokartClient", fetch = FetchType.EAGER)
+    private List<Lap> laps;
 }
