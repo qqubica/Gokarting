@@ -22,6 +22,5 @@ public class Lap {
     private BestDayTime bestDayTime;
     @OneToOne(mappedBy = "lap")
     private BestMonthTime bestMonthTime;
-    @ManyToOne(optional = false)
-    private Gokart gokart;
+
 }

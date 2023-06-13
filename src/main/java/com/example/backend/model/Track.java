@@ -25,35 +25,13 @@ public class Track {
     @OneToMany(mappedBy = "track")
     private List<Ride> ride;
 
-    public Localisation getLocalisation() {
-        return localisation;
-    }
-
-    public void setLocalisation(Localisation localisation) {
-        this.localisation = localisation;
-    }
-
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public double getAvgSpeed() {
-        return avgSpeed;
-    }
-
-    public void setAvgSpeed(double avgSpeed) {
-        this.avgSpeed = avgSpeed;
-    }
-
-    public int getNrOfTurns() {
-        return nrOfTurns;
-    }
-
-    public void setNrOfTurns(int nrOfTurns) {
-        this.nrOfTurns = nrOfTurns;
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id=" + id +
+                ", length=" + length +
+                ", avgSpeed=" + avgSpeed +
+                ", nrOfTurns=" + nrOfTurns +
+                '}';
     }
 }

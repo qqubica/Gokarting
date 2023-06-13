@@ -28,10 +28,24 @@ public class Ride {
     private Competition competition;
     @ManyToOne(optional = false)
     private Track track;
-    @OneToMany(fetch = EAGER, mappedBy = "ride")
+    @OneToMany(mappedBy = "ride")
     private List<RideGokartClient> rideDetails;
     @ManyToOne
     private Worker worker;
+
+    @Override
+    public String toString() {
+        return "Ride{" +
+                "id=" + id +
+                ", startTime=" + startTime +
+                ", duration=" + duration +
+                ", rideStatus=" + rideStatus +
+                ", rideType=" + rideType +
+                ", competition=" + competition +
+                ", track=" + track +
+                ", worker=" + worker +
+                '}';
+    }
 
     public enum RideStatus {
         CREATED, PREPERING, IN_PROGRESS, FINISHED, CANCLED, OTHER

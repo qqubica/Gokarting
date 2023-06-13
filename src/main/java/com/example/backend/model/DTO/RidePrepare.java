@@ -9,9 +9,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class RidePrepare {
-    List<Gokart> gokarts;
+    List<GokartDTO> gokarts;
     List<Client> clients;
-    public RidePrepare(List<Gokart> gokarts, List<Client> clients) {
+    public RidePrepare(List<GokartDTO> gokarts, List<Client> clients) {
         this.gokarts = gokarts;
         this.clients = clients;
     }

@@ -18,8 +18,16 @@ public class RideGokartClient {
     private Ride ride;
     @ManyToOne
     private Gokart gokart;
-    @ManyToOne(targetEntity = Client.class, fetch = FetchType.EAGER)
+    @ManyToOne
     private Client client;
-    @OneToMany(mappedBy = "rideGokartClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "rideGokartClient")
     private List<Lap> laps;
+
+    @Override
+    public String toString() {
+        return "RideGokartClient{" +
+                "id=" + id +
+                ", ride=" + ride +
+                '}';
+    }
 }
