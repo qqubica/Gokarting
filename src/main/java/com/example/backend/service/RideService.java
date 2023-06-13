@@ -1,7 +1,8 @@
 package com.example.backend.service;
 
-import com.example.backend.model.Ride;
-import com.example.backend.model.Track;
+import com.example.backend.model.*;
+import com.example.backend.model.DTO.GokartDTO;
+import com.example.backend.model.DTO.RidePrepare;
 import com.example.backend.repository.RideRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-
 
 @Service
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
@@ -24,13 +24,28 @@ public class RideService {
             System.out.println("Populated ride repository with random data.");
         }
     }
-    public Ride prepereRide(Long id) {
+    public RidePrepare prepereRide(Long id) {
+
         Optional<Ride> optionalRide = rideRepository.findById(id);
         Ride ride = optionalRide.orElseThrow(() -> new RuntimeException("Ride " + id + " not found"));
+
+        if (ride.getRideStatus() != Ride.RideStatus.CREATED) {
+            return null;
+        }
+
         ride.setRideStatus(Ride.RideStatus.PREPERING);
         rideRepository.save(ride);
-        return ride;
+
+        List<Client> clients = ride.getRideDetails().stream().map(r -> r.getClient()).toList();
+        List<GokartDTO> gokarts = ride.getTrack().getLocalisation().getGokarts().stream().map(g -> new GokartDTO(g)).toList();
+
+        System.out.println(gokarts);
+        return new RidePrepare(gokarts, clients);
     }
+    public List<Ride> getRidesList() {
+        return rideRepository.findAll();
+    }
+
     public void createRandomRides(int n, TrackService trackService) {
         Random random = new Random();
         List<Track> tracks =  trackService.getTracks();
