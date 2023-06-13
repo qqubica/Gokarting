@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -17,8 +19,8 @@ public class Gokart {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private GokartType typGokarta;
-    @OneToMany
-    private Collection<Lap> laps;
+    @OneToMany(mappedBy = "gokart")
+    private List<Lap> laps;
     @ManyToOne(optional = false)
     private Localisation localisation;
 

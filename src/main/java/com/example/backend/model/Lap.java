@@ -16,9 +16,11 @@ public class Lap {
     private int number;
     @Column(nullable = false)
     private Duration time;
-    @OneToOne
+    @ManyToOne(optional = false)
+    private RideGokartClient rideGokartClient;
+    @OneToOne(mappedBy = "lap")
     private BestDayTime bestDayTime;
-    @OneToOne
+    @OneToOne(mappedBy = "lap")
     private BestMonthTime bestMonthTime;
     @ManyToOne(optional = false)
     private Gokart gokart;

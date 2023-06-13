@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -19,8 +21,8 @@ public class Competition {
     private CompetitionRank competitionRank;
     @ManyToOne(optional = false)
     private Localisation localisation;
-    @OneToMany
-    private Collection<Ride> rides;
+    @OneToMany(mappedBy = "competition")
+    private List<Ride> rides;
 
     private enum CompetitionRank {
         INTERNATIONAL, NATIONAL, REGIONAL, LOCAL, OTHER, NO

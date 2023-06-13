@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
+import static jakarta.persistence.FetchType.EAGER;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -24,8 +28,8 @@ public class Ride {
     private Competition competition;
     @ManyToOne(optional = false)
     private Track track;
-    @OneToMany
-    private Collection<RideGokartClient> rideGokartClients;
+    @OneToMany(fetch = EAGER, mappedBy = "ride")
+    private List<RideGokartClient> rideDetails;
     @ManyToOne
     private Worker worker;
 
