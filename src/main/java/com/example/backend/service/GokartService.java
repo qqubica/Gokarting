@@ -18,7 +18,7 @@ public class GokartService {
     public GokartService(GokartRepository gokartRepository, LocalisationService localisationService) {
         this.gokartRepository = gokartRepository;
         if (gokartRepository.count() == 0) {
-            populateWithRandomData(10, localisationService);
+            populateWithRandomData(30, localisationService);
             System.out.println("Populated gokart repository with random data.");
         }
     }
