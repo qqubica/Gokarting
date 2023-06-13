@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -62,6 +63,14 @@ public class RideService {
             Track randomTrack = tracks.get(random.nextInt(tracks.size()));
             ride.setTrack(randomTrack);
 
+            // Generate random ride start date within 1 day from now
+            long oneDayInMillis = 24L * 60 * 60 * 1000;
+            long randomMillis = (long) (random.nextDouble() * oneDayInMillis);
+            Date currentDate = new Date();
+            Date rideStartDate = new Date(currentDate.getTime() - randomMillis);
+
+            ride.setStartTime(rideStartDate);
+
             ride.setRideType(Ride.RideType.values()[random.nextInt(Ride.RideType.values().length)]);
 
             ride.setRideType(Ride.RideType.values()[random.nextInt(Ride.RideType.values().length)]);
@@ -70,4 +79,5 @@ public class RideService {
         }
     }
 }
-
+//            long oneYearInMillis = 365L * 24 * 60 * 60 * 1000;
+//            long randomMillis = (long) (random.nextDouble() * oneYearInMillis);
