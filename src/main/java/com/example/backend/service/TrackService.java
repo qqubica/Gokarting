@@ -20,7 +20,7 @@ public class TrackService {
     public TrackService(TrackRepository trackRepository, LocalisationService localisationService){
         this.trackRepository = trackRepository;
         if (this.trackRepository.count()==0) {
-            createRandomTrack(5, localisationService);
+            createRandomTrack(10, localisationService);
             System.out.println("Populated track repository with random data.");
         }
     }
