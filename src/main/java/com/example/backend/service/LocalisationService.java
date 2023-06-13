@@ -5,14 +5,14 @@ import com.example.backend.repository.LocalisationRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
+@CrossOrigin(origins = "http://localhost:8081")
 public class LocalisationService {
     LocalisationRepository localisationRepository;
     @Autowired

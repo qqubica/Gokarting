@@ -5,6 +5,7 @@ import com.example.backend.repository.WorkerRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Date;
 import java.util.EnumSet;
@@ -12,6 +13,7 @@ import java.util.Random;
 
 @Service
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
+@CrossOrigin(origins = "http://localhost:8081")
 public class WorkerService {
     WorkerRepository workerRepository;
     @Autowired

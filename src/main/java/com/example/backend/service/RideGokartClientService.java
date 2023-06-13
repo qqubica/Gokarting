@@ -7,11 +7,13 @@ import com.example.backend.repository.RideGokartClientRepository;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.*;
 
 @Service
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
+@CrossOrigin(origins = "http://localhost:8081")
 public class RideGokartClientService {
     RideGokartClientRepository rideGokartClientRepository;
     @Autowired
