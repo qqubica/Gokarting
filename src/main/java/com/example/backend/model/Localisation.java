@@ -22,4 +22,12 @@ public class Localisation {
     private List<Competition> competitions;
     @OneToMany(mappedBy = "localisation")
     private List<Gokart> gokarts;
+
+    @Override
+    public String toString() {
+        return "Localisation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

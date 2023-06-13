@@ -1,5 +1,6 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +20,10 @@ public class Gokart {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private GokartType typGokarta;
-    @OneToMany(mappedBy = "gokart")
-    private List<Lap> laps;
     @ManyToOne(optional = false)
     private Localisation localisation;
+    @OneToMany(mappedBy = "gokart")
+    private List<RideGokartClient> rideGokartClients;
 
     public enum GokartType {
         KIDS, SPORT, NORMAL, OTHER
