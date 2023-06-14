@@ -2,6 +2,7 @@ package com.example.backend.service;
 
 import com.example.backend.model.*;
 import com.example.backend.model.DTO.GokartDTO;
+import com.example.backend.model.DTO.RideDto;
 import com.example.backend.model.DTO.RidePrepare;
 import com.example.backend.repository.RideRepository;
 import lombok.experimental.FieldDefaults;
@@ -27,8 +28,20 @@ public class RideService {
             System.out.println("Populated ride repository with random data.");
         }
     }
-    public RidePrepare prepereRide(Long id) {
+    public RideDto startRide(Long rideId) {
+        Optional<Ride> ride = rideRepository.findById(rideId);
 
+        Ride r = ride.orElseThrow(() -> new RuntimeException("Ride " + rideId + " not found"));
+
+        r.setStartTime(new Date());
+        r.setRideStatus(Ride.RideStatus.IN_PROGRESS);
+
+        rideRepository.save(r);
+
+        return new RideDto(r);
+    }
+    public RidePrepare prepereRide(Long id) {
+//      6
         Optional<Ride> optionalRide = rideRepository.findById(id);
         Ride ride = optionalRide.orElseThrow(() -> new RuntimeException("Ride " + id + " not found"));
 
@@ -42,7 +55,6 @@ public class RideService {
         List<Client> clients = ride.getRideDetails().stream().map(r -> r.getClient()).toList();
         List<GokartDTO> gokarts = ride.getTrack().getLocalisation().getGokarts().stream().map(g -> new GokartDTO(g)).toList();
 
-        System.out.println(gokarts);
         return new RidePrepare(gokarts, clients);
     }
     public List<Ride> getRidesList() {
@@ -79,5 +91,3 @@ public class RideService {
         }
     }
 }
-//            long oneYearInMillis = 365L * 24 * 60 * 60 * 1000;
-//            long randomMillis = (long) (random.nextDouble() * oneYearInMillis);

@@ -25,6 +25,10 @@ public class Gokart {
     @OneToMany(mappedBy = "gokart")
     private List<RideGokartClient> rideGokartClients;
 
+    public Gokart(long id) {
+        this.id = id;
+    }
+
     public enum GokartType {
         KIDS, SPORT, NORMAL, OTHER
     }

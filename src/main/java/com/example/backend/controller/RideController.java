@@ -1,15 +1,17 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.DTO.RideDto;
 import com.example.backend.model.DTO.RidePrepare;
 import com.example.backend.service.RideService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 public class RideController {
     private final RideService rideService;
 
@@ -21,5 +23,10 @@ public class RideController {
     @GetMapping("/prepereRide/{id}")
     public RidePrepare prepereRide(@PathVariable("id") Long id) {
         return rideService.prepereRide(id);
+    }
+
+    @GetMapping("/startRide/{id}")
+    public RideDto startRide(@PathVariable("id") Long id) {
+        return rideService.startRide(id);
     }
 }

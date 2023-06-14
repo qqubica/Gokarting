@@ -12,7 +12,6 @@ public class GokartDTO {
     private Gokart.GokartType typGokarta;
 
     public GokartDTO(Gokart gokart) {
-        System.out.println(gokart);
         this.id = gokart.getId();
         this.horsepower = gokart.getHorsepower();
         this.typGokarta = gokart.getTypGokarta();
