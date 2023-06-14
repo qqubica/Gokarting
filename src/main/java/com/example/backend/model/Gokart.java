@@ -29,6 +29,13 @@ public class Gokart {
         this.id = id;
     }
 
+    public void setHorsepower(int horsepower) {
+        if (horsepower < 0) {
+            throw new IllegalArgumentException("Horsepower cannot be negative");
+        }
+        this.horsepower = horsepower;
+    }
+
     public enum GokartType {
         KIDS, SPORT, NORMAL, OTHER
     }
