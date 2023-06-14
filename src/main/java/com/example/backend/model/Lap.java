@@ -18,9 +18,15 @@ public class Lap {
     private Duration time;
     @ManyToOne(optional = false)
     private RideGokartClient rideGokartClient;
-    @OneToOne(mappedBy = "lap")
+    @OneToOne(mappedBy = "lap", cascade = CascadeType.ALL)
     private BestDayTime bestDayTime;
-    @OneToOne(mappedBy = "lap")
+    @OneToOne(mappedBy = "lap", cascade = CascadeType.ALL)
     private BestMonthTime bestMonthTime;
-
+    public void setTime(int seconds) {
+//        czas okrążenia nie może być ujemny
+        if (seconds < 0) {
+            throw new IllegalArgumentException("Time cannot be negative");
+        }
+        this.time = Duration.ofSeconds(seconds);
+    }
 }
