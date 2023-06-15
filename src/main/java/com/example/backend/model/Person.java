@@ -5,9 +5,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.lang.annotation.Repeatable;
+import java.util.List;
+
 @Data
 @MappedSuperclass
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
