@@ -22,11 +22,13 @@ public class Lap {
     private BestDayTime bestDayTime;
     @OneToOne(mappedBy = "lap", cascade = CascadeType.ALL)
     private BestMonthTime bestMonthTime;
-    public void setTime(int seconds) {
-//        czas okrążenia nie może być ujemny
-        if (seconds < 0) {
-            throw new IllegalArgumentException("Time cannot be negative");
+
+    public void setNumber(int number) {
+//        numer okrążenia nie może być ujemny
+        if (number < 0) {
+            throw new IllegalArgumentException("Number cannot be negative");
         }
-        this.time = Duration.ofSeconds(seconds);
+
+        this.number = number;
     }
 }
