@@ -23,6 +23,7 @@
             v-if="trackSelect"
             @rideSelected="respondToRideSelected"
             :isDisabled="ridePreparing"
+            :selectedTrack="selectedTrackData"
         />
         <v-row>
           <ChangeRideDuration
@@ -38,8 +39,13 @@
           />
         </v-row>
       </v-col>
-      <v-col v-if="ridePreparing">
-
+      <v-col>
+        <GokartClientDrager
+            v-if="ridePreparing"
+            :ridePrepereData="ridePrepereData"
+            :ride="selectedRideData"
+            @rideStarted="respondToRideStarted"
+        />
       </v-col>
     </v-row>
   </div>
@@ -52,9 +58,11 @@ import TrackSelect from "@/components/TrackSelect.vue";
 import RideSelect from "@/components/RideSelect.vue";
 import ChangeRideDuration from "@/components/ChangeRideDuration.vue";
 import PrepereRideBtn from "@/components/PrepereRideBtn.vue";
+import GokartClientDrager from "@/components/GokartClientDrager.vue";
 export default {
 
   components: {
+    GokartClientDrager,
     PrepereRideBtn,
     ChangeRideDuration,
     RideSelect,
@@ -78,10 +86,15 @@ export default {
   }),
 
   methods: {
+    respondToRideStarted() {
+      this.ridePreparing = false
+      this.rideSelect = false
+      this.$router.go(0)
+    },
+
     respondToPreperRide(data) {
       this.ridePreparing = true
       this.ridePrepereData = data
-      // this.$emit('preperRide', data)
     },
 
     respondToRideSelected(data) {

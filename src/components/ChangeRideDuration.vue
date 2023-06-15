@@ -27,8 +27,8 @@
           </v-card-text>
         </v-card>
         <v-card-actions>
-          <v-btn color="primary" text @click="changeRideDuration(editRide)">Save</v-btn>
-          <v-btn color="red" text @click="cancelDialog()">Close</v-btn>
+          <v-btn color="primary" text @click="changeRideDuration(editRide)">Zapisz</v-btn>
+          <v-btn color="red" text @click="cancelDialog()">Zamknij</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

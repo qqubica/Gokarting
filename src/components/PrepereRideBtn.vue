@@ -5,12 +5,13 @@
     color="primary"
     :disabled="isDisabled"
   >
-    Start ride
+    Przygotuj przejazd
   </v-btn>
 </template>
 
 <script>
 import axios from "axios";
+import appConfig from "@/app_config";
 
 export default {
   name: 'PrepereRideBtn',
@@ -21,7 +22,7 @@ export default {
   methods: {
     startRide() {
       let rideId = this.ride._links.self.href.split("/").pop()
-      axios.get("http://localhost:8080/prepereRide/" + rideId)
+      axios.get(appConfig.apiUrl + "prepereRide/" + rideId)
           .then(response => {
             this.$emit('preperRide', response.data)
           })

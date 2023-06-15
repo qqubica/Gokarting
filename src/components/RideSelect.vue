@@ -52,6 +52,10 @@ export default {
       type: Boolean,
       default: false
     },
+    selectedTrack: {
+      type: Object,
+      required: true,
+    },
   },
 }
 </script>
