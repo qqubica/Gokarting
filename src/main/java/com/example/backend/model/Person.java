@@ -25,4 +25,8 @@ public class Person {
     @Column(nullable = false)
     @JsonIgnore
     private String password;
+
+    public Person(long id) {
+        this.id = id;
+    }
 }

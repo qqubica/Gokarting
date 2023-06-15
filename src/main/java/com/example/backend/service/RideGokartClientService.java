@@ -44,7 +44,6 @@ public class RideGokartClientService {
             String clientId = String.valueOf(rideGokartClient.getClient().getId());
             long gokartId = map.get(clientId);
 
-
             rideGokartClient.setGokart(new Gokart(gokartId));
 
             rideGokartClientRepository.save(rideGokartClient);
@@ -60,9 +59,20 @@ public class RideGokartClientService {
         for (int i = 0; i < n; i++) {
             RideGokartClient rideGokartClient = new RideGokartClient();
 
-            rideGokartClient.setClient(clients.get(random.nextInt(clients.size())));
+            long randomClientId = random.nextInt(clients.size());
+            int rideId = random.nextInt(rides.size());
 
-            rideGokartClient.setRide(rides.get(random.nextInt(rides.size())));
+            rideGokartClient.setRide(rides.get(rideId));
+
+            List<RideGokartClient> l = rideGokartClientRepository.findAllByRide(rides.get(rideId));
+            for (int j = 0; j < l.size(); j++) {
+                if (l.get(j).getClient().getId() == randomClientId) {
+                    randomClientId = random.nextInt();
+                    j=0;
+                }
+            }
+
+//            rideGokartClient.setClient(clients.get((int)randomClientId));
 
             rideGokartClientRepository.save(rideGokartClient);
         }

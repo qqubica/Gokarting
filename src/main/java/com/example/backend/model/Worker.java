@@ -20,6 +20,9 @@ public class Worker extends Person {
     @OneToMany(mappedBy = "worker")
     private List<Ride> rides;
 
+    public Worker(long id) {
+        super(id);
+    }
     public static EnumSet<WorkerRole> getWorkerRoles() {
         return EnumSet.allOf(WorkerRole.class);
     }
