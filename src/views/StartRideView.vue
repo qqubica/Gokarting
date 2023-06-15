@@ -44,6 +44,7 @@
             v-if="ridePreparing"
             :ridePrepereData="ridePrepereData"
             :ride="selectedRideData"
+            :selectedWorkerData="selectedWorkerData"
             @rideStarted="respondToRideStarted"
         />
       </v-col>

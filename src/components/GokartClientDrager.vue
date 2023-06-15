@@ -81,11 +81,6 @@ export default {
     gokarts: [],
     clients: [],
     selectedGokarts: [],
-    tabelColumns: [
-      { text: 'Clients', value: 'clients' },
-      { text: 'SelectedGokarts', value: 'SelectedGokarts' },
-      { text: 'Gokarts', value: 'gokarts' },
-    ],
     ridePrepered: false,
     rideStarted: false,
   }),
@@ -94,7 +89,7 @@ export default {
     async startRide() {
       await axios({
         method: "GET",
-        url: appConfig.apiUrl + "startRide/" + this.ride._links.self.href.split("/").pop()
+        url: appConfig.apiUrl + "startRide/" + this.ride._links.self.href.split("/").pop() + "/" + this.selectedWorkerData.links.self.href.split("/").pop()
       })
           .then(() => {
             this.rideStarted = true
@@ -162,7 +157,11 @@ export default {
     ride: {
       type: Object,
       required: true,
-    }
+    },
+    selectedWorkerData: {
+      type: Object,
+      required: true,
+    },
   },
 
   components: {
