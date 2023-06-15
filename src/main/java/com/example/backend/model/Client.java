@@ -14,4 +14,8 @@ import lombok.NoArgsConstructor;
 public class Client extends Person {
     @Column(nullable = false)
     private int level = 0;
+
+    public Client(long id) {
+        super(id);
+    }
 }
