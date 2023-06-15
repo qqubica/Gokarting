@@ -28,7 +28,7 @@ public class RideService {
             System.out.println("Populated ride repository with random data.");
         }
     }
-    public RideDto startRide(Long rideId) {
+    public RideDto startRide(Long rideId, Long workerId) {
         Optional<Ride> ride = rideRepository.findById(rideId);
 
         Ride r = ride.orElseThrow(() -> new RuntimeException("Ride " + rideId + " not found"));
@@ -36,12 +36,13 @@ public class RideService {
         r.setStartTime(new Date());
         r.setRideStatus(Ride.RideStatus.IN_PROGRESS);
 
+        r.setWorker(new Worker(workerId));
+
         rideRepository.save(r);
 
         return new RideDto(r);
     }
     public RidePrepare prepereRide(Long id) {
-//      6
         Optional<Ride> optionalRide = rideRepository.findById(id);
         Ride ride = optionalRide.orElseThrow(() -> new RuntimeException("Ride " + id + " not found"));
 

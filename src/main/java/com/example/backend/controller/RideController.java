@@ -25,8 +25,8 @@ public class RideController {
         return rideService.prepereRide(id);
     }
 
-    @GetMapping("/startRide/{id}")
-    public RideDto startRide(@PathVariable("id") Long id) {
-        return rideService.startRide(id);
+    @GetMapping("/startRide/{rideId}/{workerId}")
+    public RideDto startRide(@PathVariable("rideId") Long rideId, @PathVariable("workerId") Long workerId) {
+        return rideService.startRide(rideId, workerId);
     }
 }
